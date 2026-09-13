@@ -19,6 +19,7 @@ evidence trail survives even if you later change how verdicts are computed.
 
 from datetime import datetime, timezone
 from enum import Enum
+from typing import Any
 
 from sqlmodel import Field, SQLModel
 
@@ -85,3 +86,15 @@ class Verdict(SQLModel, table=True):
     confidence: float = Field(ge=0.0, le=1.0)
     explanation: str
     created_at: datetime = Field(default_factory=_utcnow)
+
+    def model_post_init(self, __context: Any) -> None:
+        """Enforce the confidence Field constraint.
+
+        SQLModel table models skip normal pydantic validation on
+        construction (it would fight with SQLAlchemy's own attribute
+        instrumentation), so a `ge`/`le` Field constraint like the one on
+        `confidence` above is otherwise silently ignored. This re-checks it
+        explicitly, in the one hook that *does* still run for table models.
+        """
+        if not 0.0 <= self.confidence <= 1.0:
+            raise ValueError(f"confidence must be between 0 and 1, got {self.confidence}")
