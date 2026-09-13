@@ -1,0 +1,24 @@
+[
+  {
+    "id": "grc20-entity-0001",
+    "space_id": "space-example-daos",
+    "name": "Example DAO",
+    "types": ["Organization"],
+    "attributes": [
+      { "name": "Founded", "value": "2023" },
+      { "name": "Founders", "value": "Alice Nakamoto, Bob Szabo" },
+      { "name": "Treasury address", "value": "0x1522900b6dafac587d499a862861c0869be6e421" }
+    ]
+  },
+  {
+    "id": "grc20-entity-0002",
+    "space_id": "space-example-tokens",
+    "name": "Example USD Coin",
+    "types": ["Token", "Asset"],
+    "attributes": [
+      { "name": "Symbol", "value": "USDC" },
+      { "name": "Contract address", "value": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" },
+      { "name": "Chain", "value": "Ethereum" }
+    ]
+  }
+]

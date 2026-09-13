@@ -1,0 +1,25 @@
+{
+  "explorer_url_template": "https://etherscan.io/tx/{tx_hash}",
+  "transfers": [
+    {
+      "tx_hash": "0x9f2a1c4e6b0d8a3f5c7e9b1d2a4f6c8e0b2d4f6a8c0e2b4d6f8a0c2e4b6d8f0a",
+      "from": "0x28c6c06298d514db089934071355e5743bf21d60",
+      "to": "0x1522900b6dafac587d499a862861c0869be6e421",
+      "token_symbol": "USDC",
+      "amount": 50000.0,
+      "amount_usd": 50000.0,
+      "chain": "ethereum",
+      "timestamp": "2026-09-10T14:22:31Z"
+    },
+    {
+      "tx_hash": "0x1b3d5f7a9c1e3b5d7f9a1c3e5b7d9f1a3c5e7b9d1f3a5c7e9b1d3f5a7c9e1b3d",
+      "from": "0x1522900b6dafac587d499a862861c0869be6e421",
+      "to": "0x3a2f1e9c7b5d3a1f9e7c5b3d1a9f7e5c3b1d9f7a",
+      "token_symbol": "USDC",
+      "amount": 12000.0,
+      "amount_usd": 12000.0,
+      "chain": "ethereum",
+      "timestamp": "2026-09-11T09:05:12Z"
+    }
+  ]
+}

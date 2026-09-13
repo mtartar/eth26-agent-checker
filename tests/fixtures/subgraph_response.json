@@ -1,0 +1,15 @@
+{
+  "data": {
+    "transfers": [
+      {
+        "id": "0x9f2a1c4e6b0d8a3f-0",
+        "from": "0x28c6c06298d514db089934071355e5743bf21d60",
+        "to": "0x1522900b6dafac587d499a862861c0869be6e421",
+        "amount": "50000000000",
+        "token": { "symbol": "USDC" },
+        "timestamp": "1757511751",
+        "transactionHash": "0x9f2a1c4e6b0d8a3f5c7e9b1d2a4f6c8e0b2d4f6a8c0e2b4d6f8a0c2e4b6d8f0a"
+      }
+    ]
+  }
+}
