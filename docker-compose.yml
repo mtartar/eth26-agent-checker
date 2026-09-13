@@ -1,0 +1,37 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATA_SOURCE: ${DATA_SOURCE:-fixture}
+      DATABASE_URL: postgresql+psycopg://agentchecker:agentchecker@postgres:5432/agentchecker
+      REDIS_URL: redis://redis:6379/0
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-claude-sonnet-4-6}
+      THE_GRAPH_API_KEY: ${THE_GRAPH_API_KEY:-}
+      THE_GRAPH_GATEWAY_URL: ${THE_GRAPH_GATEWAY_URL:-https://gateway.thegraph.com}
+      GRC20_API_ORIGIN: ${GRC20_API_ORIGIN:-}
+      GRC20_SPACE_ID: ${GRC20_SPACE_ID:-}
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: agentchecker
+      POSTGRES_PASSWORD: agentchecker
+      POSTGRES_DB: agentchecker
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
