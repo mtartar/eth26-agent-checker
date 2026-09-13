@@ -6,6 +6,8 @@ app/tools — this file's only job is to assemble them.
 """
 
 import logging
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
@@ -16,6 +18,14 @@ from app.database import init_db
 settings = get_settings()
 logging.basicConfig(level=settings.log_level)
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+    """Create database tables before serving any requests."""
+    init_db()
+    yield
+
+
 app = FastAPI(
     title="Agent Checker",
     description=(
@@ -23,13 +33,8 @@ app = FastAPI(
         "knowledge graph, with full evidence trails."
     ),
     version="0.1.0",
+    lifespan=lifespan,
 )
-
-
-@app.on_event("startup")
-def on_startup() -> None:
-    """Create database tables before serving any requests."""
-    init_db()
 
 
 @app.get("/health")

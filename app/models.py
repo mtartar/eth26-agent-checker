@@ -17,17 +17,17 @@ verdict text — the data is structured from the start. It also means the raw
 evidence trail survives even if you later change how verdicts are computed.
 """
 
-from datetime import UTC, datetime
-from enum import StrEnum
+from datetime import datetime, timezone
+from enum import Enum
 
 from sqlmodel import Field, SQLModel
 
 
 def _utcnow() -> datetime:
-    return datetime.now(UTC)
+    return datetime.now(timezone.utc)
 
 
-class ClaimStatus(StrEnum):
+class ClaimStatus(str, Enum):
     """Lifecycle of a submitted claim, from submission to a final verdict."""
 
     pending = "pending"
@@ -36,7 +36,7 @@ class ClaimStatus(StrEnum):
     failed = "failed"
 
 
-class VerdictLabel(StrEnum):
+class VerdictLabel(str, Enum):
     """The agent's final answer for a claim."""
 
     confirmed = "confirmed"
@@ -45,7 +45,7 @@ class VerdictLabel(StrEnum):
     unverifiable = "unverifiable"
 
 
-class EvidenceSource(StrEnum):
+class EvidenceSource(str, Enum):
     """Which external data source a piece of evidence came from."""
 
     token_api = "token_api"

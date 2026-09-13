@@ -18,7 +18,7 @@ you'll see again in app/tools/base.py.
 
 import json
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, cast
 
 from app.config import get_settings
 
@@ -73,7 +73,7 @@ class RedisCache(CacheBackend):
 
     def get(self, key: str) -> Any | None:
         """Return the cached value for `key`, or `None` if absent."""
-        raw = self._client.get(key)
+        raw = cast("str | None", self._client.get(key))
         return json.loads(raw) if raw is not None else None
 
     def set(self, key: str, value: Any, ttl_seconds: int = 3600) -> None:
