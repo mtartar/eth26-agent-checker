@@ -1,0 +1,11 @@
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+pydantic-settings==2.7.0
+sqlmodel==0.0.22
+httpx==0.28.1
+anthropic==0.42.0
+redis==5.2.1
+psycopg[binary]==3.2.3
+python-dotenv==1.0.1
+tenacity==9.0.0

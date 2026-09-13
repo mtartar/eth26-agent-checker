@@ -1,4 +1,4 @@
-# Graph Fact Checker
+# Agent Checker
 
 An AI agent that verifies factual claims — especially on-chain / crypto claims —
 against two independent sources of truth:
@@ -47,10 +47,10 @@ cp .env.example .env
 pytest
 
 # Start the API
-uvicorn app.main:app --reload --port 8001
+uvicorn app.main:app --reload --port 8099
 ```
 
-Open `http://127.0.0.1:8000/docs` for the interactive API documentation.
+Open `http://127.0.0.1:8099/docs` for the interactive API documentation.
 
 ## Switching to live data
 
